@@ -1,0 +1,29 @@
+---
+import Controller from '../components/Controller.vue';
+import Presentation from '../components/Presentation.vue';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<style>
+			html,
+			body {
+				font-family: system-ui;
+				margin: 0;
+			}
+			body {
+				padding: 2rem;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<Controller client:visible />
+			<Presentation client:visible />
+		</main>
+	</body>
+</html>
