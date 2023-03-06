@@ -1,11 +1,28 @@
-import {computed, map} from 'nanostores'
+import {atom, computed, map} from 'nanostores'
 import type {ExampleModel} from "./StorageModel";
+
+
+export type ItemInfo = {
+    field1: string;
+    field2: string;
+}
+
+export const itemsStore = atom<ItemInfo[]>([])
 
 export const exampleStore = map<ExampleModel>({
     flag: false,
     text: "",
     options: []
 })
+
+export const addItem =
+    () =>  {
+        const items = itemsStore.get();
+        items.push({field1: `Item ${items.length}`, field2: new Date().toDateString()});
+        console.log(items)
+        itemsStore.set([...items]);
+        console.log(itemsStore.get())
+    }
 
 export const toggleFlag =
     () => exampleStore.setKey("flag", !exampleStore.get().flag);
